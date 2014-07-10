@@ -106,6 +106,9 @@ namespace AbaSoft.Net.Rest
                     case WebRequestMethods.Http.Put:
                         put(a_context);
                         break;
+                    case WebRequestMethods.Http.Post:
+                        post(a_context);
+                        break;
                 }
             }
             else

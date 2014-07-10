@@ -54,6 +54,7 @@
   </Choose>
   <ItemGroup>
     <Compile Include="RestController_tests.cs" />
+    <Compile Include="RequiredHeaderHttpRequestValidator_tests.cs" />
     <Compile Include="RestServer_tests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.21005.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AbaSoft.Net", "AbaSoft.Net\AbaSoft.Net.csproj", "{9A698B90-CC4F-42E3-A9A4-BE0AA0D0821C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AbaSoft.Net_UnitTests", "AbaSoft.Net_UnitTests\AbaSoft.Net_UnitTests.csproj", "{77D267A9-DF2B-425C-B7D1-F6D6D3CC9FE1}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9A698B90-CC4F-42E3-A9A4-BE0AA0D0821C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9A698B90-CC4F-42E3-A9A4-BE0AA0D0821C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9A698B90-CC4F-42E3-A9A4-BE0AA0D0821C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9A698B90-CC4F-42E3-A9A4-BE0AA0D0821C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{77D267A9-DF2B-425C-B7D1-F6D6D3CC9FE1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{77D267A9-DF2B-425C-B7D1-F6D6D3CC9FE1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{77D267A9-DF2B-425C-B7D1-F6D6D3CC9FE1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{77D267A9-DF2B-425C-B7D1-F6D6D3CC9FE1}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

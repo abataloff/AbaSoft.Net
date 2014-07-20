@@ -13,5 +13,7 @@ namespace AbaSoft.Net
         string StatusDescription { get; set; }
 
         void AddHeader(string a_name, string a_value);
+
+        void Close();
     }
 }

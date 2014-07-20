@@ -6,7 +6,7 @@ namespace AbaSoft.Net
     {
         System.Net.HttpStatusCode StatusCode { get; set; }
 
-        int ContentLength64 { get; set; }
+        long ContentLength64 { get; set; }
 
         Stream OutputStream { get; }
 

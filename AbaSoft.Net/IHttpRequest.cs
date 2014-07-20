@@ -13,7 +13,7 @@ namespace AbaSoft.Net
 
         Stream InputStream { get; }
 
-        int ContentLength64 { get; }
+        long ContentLength64 { get; }
 
         NameValueCollection Headers { get; }
 

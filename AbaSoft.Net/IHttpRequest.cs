@@ -18,5 +18,7 @@ namespace AbaSoft.Net
         NameValueCollection Headers { get; }
 
         NameValueCollection QueryString { get; }
+
+        void AddHeader(string a_name, string a_value);
     }
 }

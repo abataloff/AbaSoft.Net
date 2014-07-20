@@ -11,5 +11,7 @@ namespace AbaSoft.Net
         Stream OutputStream { get; }
 
         string StatusDescription { get; set; }
+
+        void AddHeader(string a_name, string a_value);
     }
 }

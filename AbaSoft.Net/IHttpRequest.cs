@@ -20,5 +20,7 @@ namespace AbaSoft.Net
         NameValueCollection QueryString { get; }
 
         void AddHeader(string a_name, string a_value);
+
+        Guid RequestTraceIdentifier { get; }
     }
 }

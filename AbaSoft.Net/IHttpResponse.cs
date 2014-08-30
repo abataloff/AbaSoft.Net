@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 
 namespace AbaSoft.Net
 {
@@ -15,5 +16,7 @@ namespace AbaSoft.Net
         void AddHeader(string a_name, string a_value);
 
         void Close();
+
+        Guid RequestTraceIdentifier { get; }
     }
 }

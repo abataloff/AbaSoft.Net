@@ -1,7 +1,9 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Tools
 {
+    [ExcludeFromCodeCoverage] 
     public class UniversalEventArgs<T> : EventArgs
     {
         public T Target { get; set; }

@@ -1,4 +1,5 @@
-﻿using AbaSoft.Net.Validators;
+﻿using System.IO;
+using AbaSoft.Net.Validators;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -154,6 +155,19 @@ namespace AbaSoft.Net.Rest
                 var _output = a_response.OutputStream;
                 _output.Write(a_buffer, 0, a_buffer.Length);
                 _output.Close();
+            }
+            catch
+            {
+                throw new HttpListenerException((int) HttpStatusCode.RequestTimeout);
+            }
+        }
+
+        protected static void setContent(IHttpResponse a_response, Stream a_contentStream)
+        {
+            try
+            {
+                a_contentStream.CopyTo(a_response.OutputStream);
+                a_response.ContentLength64 = a_contentStream.Length;
             }
             catch
             {

@@ -96,7 +96,9 @@ namespace AbaSoft.Net.Rest
             var _response = a_context.Response;
             var _method = _request.HttpMethod;
 
-            if (valid(_request))
+            HttpStatusCode _errorStatusCode;
+            string _errorMessage;
+            if (valid(_request,out _errorStatusCode, out _errorMessage))
             {
                 afterValidate(_request);
                 switch (_method)
@@ -114,7 +116,7 @@ namespace AbaSoft.Net.Rest
             }
             else
             {
-                setCode(_response, HttpStatusCode.BadRequest);
+                setCode(_response, _errorStatusCode);
             }
         }
 
@@ -122,9 +124,20 @@ namespace AbaSoft.Net.Rest
         {
         }
 
-        private bool valid(IHttpRequest a_request)
+        private bool valid(IHttpRequest a_request, out HttpStatusCode a_errorStutusCode,out string a_errorMessage)
         {
-            return rules[a_request.HttpMethod].All(a_httpRequesValidator => a_httpRequesValidator.Validate(a_request));
+            foreach (var _httpRequesValidator in rules[a_request.HttpMethod])
+            {
+                if (!_httpRequesValidator.Validate(a_request))
+                {
+                    a_errorStutusCode = _httpRequesValidator.ErrorStatusCode;
+                    a_errorMessage = _httpRequesValidator.ErrorMessage;
+                    return false;
+                }
+            }
+            a_errorStutusCode = HttpStatusCode.OK;
+            a_errorMessage = string.Empty;
+            return true;
         }
 
         protected virtual void get(IHttpMessage a_context)

@@ -97,7 +97,7 @@ namespace AbaSoft.Net
 
         private static void logResponse(IHttpResponse a_response)
         {
-            logger.Debug("Response[{0}]: ContentLength:{1}, StatusCode:{2}, StatusDescription:{3}",
+            logger.Debug("Response[{0}]: ContentLength:{1}, ErrorStatusCode:{2}, StatusDescription:{3}",
                 a_response.RequestTraceIdentifier.ToString().Remove(0, 19),
                 a_response.ContentLength64, a_response.StatusCode, a_response.StatusDescription);
         }

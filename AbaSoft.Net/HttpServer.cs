@@ -119,9 +119,9 @@ namespace AbaSoft.Net
                 ? a_request.Headers.AllKeys.Select(a_headerKey => string.Format("{0}: {1}", a_headerKey, a_request.Headers[a_headerKey]))
                 : new string[0];
 
-            logger.Debug("Request[{0}]: Uri:{1}, IP:{2} Method:{3} \nHeaders:\n{4}",
+            logger.Debug("Request[{0}]: Uri:{1}, IP:{2} Method:{3}{4}",
                 a_request.RequestTraceIdentifier.ToString().Remove(0, 19),
-                a_request.Url, "NONE", a_request.HttpMethod, string.Join("\n", _headers));
+                a_request.Url, "NONE", a_request.HttpMethod, a_showHeaders ? " \nHeaders:\n" + string.Join("\n", _headers) : "");
         }
     }
 }

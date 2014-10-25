@@ -24,7 +24,14 @@ namespace AbaSoft.Net
                 listener.Prefixes.Add(_prefix);
 
             thread = new Thread(method);
+
+            ShowHeadersInLog = false;
+            SendAcaHeaders = true;
         }
+
+        public bool ShowHeadersInLog { get; set; }
+
+        public bool SendAcaHeaders { get; set; }
 
         public void Start()
         {
@@ -68,12 +75,16 @@ namespace AbaSoft.Net
                     var _context = _listener.EndGetContext(a_result);
                     var _msg = HttpMessage.Create(_context);
 
-                    logRequest(_msg.Request);
+                    logRequest(_msg.Request, ShowHeadersInLog);
 
                     var _response = (HttpResponse) _msg.Response;
-                    _response.AddHeader("Access-Control-Allow-Origin", "*");
-                    _response.AddHeader("Access-Control-Allow-Headers", "Authorization, Content-Type");
-                    _response.AddHeader("Access-Control-Allow-Methods", "POST, GET, OPTIONS, PUT");
+
+                    if (SendAcaHeaders)
+                    {
+                        _response.AddHeader("Access-Control-Allow-Origin", "*");
+                        _response.AddHeader("Access-Control-Allow-Headers", "Authorization, Content-Type");
+                        _response.AddHeader("Access-Control-Allow-Methods", "POST, GET, OPTIONS, PUT");
+                    }
 
                     // OPTIONS запросы не должны обрабатываться
                     if (_msg.Request.HttpMethod != "OPTIONS" && MessageReceived != null)
@@ -102,10 +113,11 @@ namespace AbaSoft.Net
                 a_response.ContentLength64, a_response.StatusCode, a_response.StatusDescription);
         }
 
-        private static void logRequest(IHttpRequest a_request)
+        private void logRequest(IHttpRequest a_request, bool a_showHeaders)
         {
-            var _headers =
-                a_request.Headers.AllKeys.Select(a_headerKey => string.Format("{0}: {1}", a_headerKey, a_request.Headers[a_headerKey]));
+            var _headers = a_showHeaders
+                ? a_request.Headers.AllKeys.Select(a_headerKey => string.Format("{0}: {1}", a_headerKey, a_request.Headers[a_headerKey]))
+                : new string[0];
 
             logger.Debug("Request[{0}]: Uri:{1}, IP:{2} Method:{3} \nHeaders:\n{4}",
                 a_request.RequestTraceIdentifier.ToString().Remove(0, 19),
